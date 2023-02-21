@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $sql);
 </body>
 <div class="content">
     <center>
-        <h1>Students Data</h1>
+        <h1>Students Data</h1><br>
         <?php
         
         if ($_SESSION['message']) {
@@ -78,8 +78,8 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo "{$data['email']}" ?></td>
                         <td><?php echo "{$data['phone']}" ?></td>
                         <td><?php echo "{$data['password']}" ?></td>
-                        <td><?php echo "<a class='btn btn-primary' onClick = \" javascript:return confirm('Are you sure you want to delete student') \"  href='delete_student.php? student_id={$data['id']}'>Delete</a>" ?></td>
-                        
+                        <td><?php echo "<a class='btn btn-danger' onClick = \" javascript:return confirm('Are you sure you want to delete student') \"  href='delete_student.php? student_id={$data['id']}'>Delete</a>" ?></td>
+
                         <td><?php echo "<a class='btn btn-primary'  href='update_student.php? student_id={$data['id']}'>Update</a>" ?></td>
 
                         
