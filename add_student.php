@@ -33,7 +33,7 @@ if (isset($_POST['add_student'])) {
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
-            echo "script type='text/javascript'>
+            echo "<script type='text/javascript'>
         alert('Student Added Successfully')
         </script>";
         } else {

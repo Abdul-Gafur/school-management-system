@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+error_reporting(0);
 if (!isset($_SESSION['username'])) {
     header("location:login.php");
 } elseif ($_SESSION['usertype'] == "student") {
@@ -48,6 +49,14 @@ $result = mysqli_query($conn, $sql);
 <div class="content">
     <center>
         <h1>Students Data</h1>
+        <?php
+        
+        if ($_SESSION['message']) {
+            echo $_SESSION['message'];
+        }
+
+        unset($_SESSION['message']);
+        ?>
 
         <div class="container">
             <table class="table table-bordered table-hover">
@@ -57,6 +66,7 @@ $result = mysqli_query($conn, $sql);
                     <th>Phone</th>
                     <th>Password</th>
                     <th>Delete</th>
+                    <th>Update</th>
                 </tr>
 
                 <?php while ($data = $result->fetch_assoc()) { ?>
@@ -68,7 +78,11 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo "{$data['email']}" ?></td>
                         <td><?php echo "{$data['phone']}" ?></td>
                         <td><?php echo "{$data['password']}" ?></td>
-                        <td><?php echo "<a href='delete_student.php'>Delete</a>" ?></td>
+                        <td><?php echo "<a class='btn btn-primary' onClick = \" javascript:return confirm('Are you sure you want to delete student') \"  href='delete_student.php? student_id={$data['id']}'>Delete</a>" ?></td>
+                        
+                        <td><?php echo "<a class='btn btn-primary'  href='update_student.php? student_id={$data['id']}'>Update</a>" ?></td>
+
+                        
                     </tr>
                 <?php } ?>
             </table>
