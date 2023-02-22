@@ -11,6 +11,7 @@ if (!isset($_SESSION['username'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,29 +21,20 @@ if (!isset($_SESSION['username'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 </head>
+
 <body>
-    <header class="header">
-        <a href="">Student Dashboard</a>
-        <div class="logout">
-            <a class="btn btn-primary " href="logout.php">Logout</a>
-        </div>
-    </header>
-    <aside>
-        <ul>
-            <li>
-                <a href="">My Courses</a>
-            </li>
-            <li>
-                <a href="">View Results</a>
-            </li>
-            
-        </ul>
-    </aside>
+    <?php
+        include('system/include/student_header.php');
+        include('system/include/student_side_bar.php');
+    ?>
+    
     <div class="content">
         <h1>Side Accordion</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempore obcaecati odit dicta deserunt optio est, at, minima sunt asperiores, nulla quidem? Beatae eos accusantium id culpa dignissimos quas cupiditate.</p>
         <input type="text" name="" id="">
     </div>
 </body>
+
 </html>
+
 </html>
