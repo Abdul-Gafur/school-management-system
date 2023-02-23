@@ -9,6 +9,17 @@ if ($_SESSION['message']) {
     </script>";
 }
 
+
+$hostname = 'localhost';
+$username = 'root';
+$password = '';
+$db = 'management_system';
+
+$conn = mysqli_connect($hostname, $username, $password, $db);
+
+$sql = "SELECT * FROM teacher";
+$result = mysqli_query($conn, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -59,18 +70,20 @@ if ($_SESSION['message']) {
     </center>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <img class="teacher_img" src="assets/teacher1.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum doloremque quis obcaecati odio hic nulla delectus saepe eos ab deleniti aliquid facilis labore libero, quia, dolore quos? Aspernatur, molestias minima.</p>
-            </div>
-            <div class="col-md-4">
-                <img class="teacher_img" src="assets/teacher2.png" alt="">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsam, sint nemo in quis cumque amet doloremque nisi natus! Consequuntur quisquam assumenda perferendis eius ea deserunt eligendi soluta aperiam fuga!</p>
-            </div>
-            <div class="col-md-4">
-                <img class="teacher_img" src="assets/teacher3.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, deleniti labore ipsam at dolorem provident magnam culpa consectetur commodi accusantium tempore vero quisquam, atque perferendis tenetur quo consequatur? Molestias, recusandae</p>
-            </div>
+            <?php
+            while ($info = $result->fetch_assoc()) {
+
+            ?>
+                <div class="col-md-4">
+                    <img src="<?php echo "{$info['image']}" ?>" alt="">
+                    <h3><?php echo "{$info['name']}" ?></h3>
+                    <p><?php echo "{$info['description']}" ?></p>
+                </div>
+
+            <?php
+            }
+            ?>
+
         </div>
     </div>
     <!-- teacher section end -->
@@ -103,10 +116,10 @@ if ($_SESSION['message']) {
             <form action="data_check.php" method="POST">
                 <div>
                     <div class="adm_fm">
-                         <label class="label_text" for="">Name:</label>
+                        <label class="label_text" for="">Name:</label>
                         <input class="input_ad" type="text" name="name" id="">
                     </div>
-                    <div class="adm_fm"> 
+                    <div class="adm_fm">
                         <label class="label_text" for="">Email:</label>
                         <input class="input_ad" type="text" name="email" id="">
                     </div>
@@ -131,4 +144,4 @@ if ($_SESSION['message']) {
     </footer>
 </body>
 
-</html> 
+</html>
